@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressController;
 use Illuminate\Support\Facades\Route;
@@ -9,10 +10,13 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('modules.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/belajar', [ModuleController::class, 'index'])->name('modules.index');
+    Route::get('/belajar/{module:slug}', [ModuleController::class, 'show'])->name('modules.show');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
