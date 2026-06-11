@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Send everything into Laravel's public/ folder when the document root
+    # is the project root (shared-hosting setup, e.g. Hostinger).
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
