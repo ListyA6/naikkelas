@@ -16,6 +16,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/belajar', [ModuleController::class, 'index'])->name('modules.index');
     Route::get('/belajar/{module:slug}', [ModuleController::class, 'show'])->name('modules.show');
+    Route::get('/belajar/{module:slug}/{lesson}', [ModuleController::class, 'lesson'])->name('lessons.show');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

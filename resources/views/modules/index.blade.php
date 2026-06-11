@@ -53,10 +53,10 @@
 
                 @if ($resumeModule)
                     <a
-                        href="{{ route('modules.show', $resumeModule) }}"
-                        class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors duration-150"
+                        href="{{ $resumeLesson ? route('lessons.show', [$resumeModule, $resumeLesson]) : route('modules.show', $resumeModule) }}"
+                        class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-sm transition-colors duration-150"
                     >
-                        Lanjutkan
+                        {{ $completedLessons > 0 ? 'Lanjutkan belajar' : 'Mulai belajar' }}
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
