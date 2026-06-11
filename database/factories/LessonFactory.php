@@ -20,7 +20,7 @@ class LessonFactory extends Factory
     {
         return [
             'module_id' => Module::factory(),
-            'order' => 1,
+            'order' => $this->faker->unique()->numberBetween(1, 1000),
             'title' => $this->faker->sentence(4),
             'body' => $this->faker->paragraphs(3, true),
             'action_text' => $this->faker->optional()->sentence(),
